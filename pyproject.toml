@@ -1,0 +1,10 @@
+[project]
+name = "geminiagentcli"
+version = "0.1.0"
+description = "cli ai agent with free tier from gemini ai studio"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-genai==1.12.1",
+    "python-dotenv==1.1.0",
+]
