@@ -38,4 +38,5 @@ def main():
         print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
         print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
 
-main()
+if __name__ == "__main__":
+    main()
