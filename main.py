@@ -3,12 +3,29 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from tools import (
+    get_files_info,
+    create_file,
+    read_file,
+    delete_file,
+    search_files,
+    rename_file
+    )
+
+AVAILABLE_TOOLS = {
+    'create_file': create_file,
+    'delete_file': delete_file,
+    'get_files_info': get_files_info,
+    'read_file': read_file,
+    'search_files': search_files,
+    'rename_file': rename_file
+}
 
 def main():
     load_dotenv()
     api_key=os.environ.get("GEMINI_API_KEY")
     client = genai.Client(api_key=api_key)
-
+    
     if len(sys.argv) < 2:
         print("I need a prompt!")
         sys.exit(1)
@@ -24,7 +41,8 @@ def main():
 
     response = client.models.generate_content(
         model="gemini-2.0-flash-001",
-        contents=messages 
+        contents=messages,
+
     )
 
     print(response.text)
